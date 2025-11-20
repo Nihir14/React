@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* index.css - drop this in whole */
+
+:root{
+  --card-bg: #ffffff;
+  --card-border: rgba(15,23,42,0.06);
+  --muted: #6b7280;
+  --accent-start: #6366f1;
+  --accent-end: #8b5cf6;
+  --btn-text: #ffffff;
+  --page-bg: #f3f4f6;
+  --shadow: 0 10px 25px rgba(2,6,23,0.08);
+  --radius: 16px;
+  --glass-opacity: 0.7;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial;
+}
+
+/* Page baseline & center card */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 24px;
+}
+
+/* Card wrapper */
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* subtle hover lift */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+}
+
+/* media/banner image */
+.card__img {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  object-fit: cover;
+  display: block;
+
+}
+
+/* content area */
+.card__body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* title and text */
+.card__title {
+  margin: 0;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.2;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.card__text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* action button */
+.card__cta {
+  margin-top: 8px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.98rem;
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  color: var(--btn-text);
+  box-shadow: 0 6px 18px rgba(99,102,241,0.18);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+/* button press */
+.card__cta:active {
+  transform: translateY(1px) scale(.998);
+  box-shadow: 0 6px 12px rgba(99,102,241,0.12);
+}
+
+/* button hover */
+.card__cta:hover {
+  opacity: 0.98;
+}
+
+/* small responsive tweak */
+@media (max-width: 420px) {
+  .card { max-width: 92%; }
+  .card__img { height: 170px; }
+}
+
+/* dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: rgba(17,24,39,0.88);
+    --card-border: rgba(255,255,255,0.04);
+    --muted: #c7d2fe;
+    --page-bg: #0b1020;
+    --shadow: 0 10px 25px rgba(2,6,23,0.6);
+  }
+
+  body { background: linear-gradient(180deg, rgba(9,10,12,1), rgba(3,5,10,1)); }
+
+  .card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--card-border);
+  }
+
+  .card__title { color: #e6edf3; }
+  .card__text { color: #a6b0c6; }
+}
